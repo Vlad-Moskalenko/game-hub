@@ -3,6 +3,7 @@ import { Platform } from "./usePlatforms";
 import {useGameQueryStore} from '../statement/gameQueryStore'
 
 import APIClient, {FetchResponse} from "../services/api-client";
+import ms from "ms";
 
 const apiClient = new APIClient<Game>('/games')
 export interface Game {
@@ -12,6 +13,8 @@ export interface Game {
   parent_platforms: { platform: Platform }[];
   metacritic: number;
   rating_top: number;
+  slug: string;
+  description_raw: string;
 }
 
 const useGames = () => {
@@ -30,7 +33,7 @@ const useGames = () => {
   getNextPageParam: (lastPage, allPages) => {
     return lastPage.next ? allPages.length + 1 : undefined;
   },
-  staleTime: 24*60*60*1000//24h
+  staleTime: ms('24h')
 })
 }
 
