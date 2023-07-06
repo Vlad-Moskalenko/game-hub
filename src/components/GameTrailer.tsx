@@ -14,9 +14,5 @@ export const GameTrailer = ({ id }: Props) => {
 
   const res = data?.results[0];
 
-  return res ? (
-    <video src={res.data[480]} poster={res.preview} controls />
-  ) : (
-    <Text>This game doesn't have trailer</Text>
-  );
+  return res ? <video src={res.data[480]} poster={res.preview} controls /> : null;
 };
