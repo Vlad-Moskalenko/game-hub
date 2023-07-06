@@ -25,7 +25,7 @@ class APIClient<T> {
   }
 
   getGameDetails = (id: string | number) => {
-    return axiosInstance.get<T>(this.endpoint + '/' + id).then(res => res.data)
+    return axiosInstance.get<T>(this.endpoint + `/${id}`).then(res => res.data)
   }
 }
 
